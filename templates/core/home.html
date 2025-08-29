@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Okan Kantar - Full Stack Developer{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Mountain Fall Animation -->
+<section class="hero" id="hero">
+    <div class="mountain-container">
+        <canvas id="mountain-canvas"></canvas>
+    </div>
+    
+    <div class="hero-content" id="hero-content">
+        <div class="hero-text" data-aos="fade-up" data-aos-delay="2000">
+            <h1 class="hero-title">
+                <span class="text-reveal">Merhaba, Ben</span>
+                <span class="name-highlight">Okan Kantar</span>
+            </h1>
+            <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="2300">
+                Full Stack Developer
+            </h2>
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="2600">
+                Modern teknolojilerle yaratıcı çözümler üreten, 
+                <strong>C#, Python, JavaScript</strong> ve <strong>Django, React</strong> 
+                teknolojilerinde uzman yazılım geliştirici
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="2900">
+                <a href="{% url 'core:projects' %}" class="btn btn-primary">
+                    <i class="fas fa-code"></i>
+                    Projelerim
+                </a>
+                <a href="{% url 'core:contact' %}" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    İletişime Geç
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-image" data-aos="fade-left" data-aos-delay="2500">
+            <div class="image-container">
+                <div class="floating-elements">
+                    <div class="floating-icon" style="--delay: 0s;">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <div class="floating-icon" style="--delay: 1s;">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="floating-icon" style="--delay: 2s;">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="floating-icon" style="--delay: 3s;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="3200">
+        <div class="scroll-text">Aşağı Kaydır</div>
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- Quick Stats Section -->
+<section class="stats-section" id="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="stat-number" data-count="5">0</div>
+                <div class="stat-label">Yıl Deneyim</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="stat-number" data-count="20">0</div>
+                <div class="stat-label">Tamamlanan Proje</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">Mutlu Müşteri</div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="stat-number" data-count="1000">0</div>
+                <div class="stat-label">Kahve</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview Section -->
+<section class="services-preview" id="services">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Hizmetlerim</h2>
+            <p>Modern teknolojilerle kaliteli çözümler sunuyorum</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Web Geliştirme</h3>
+                <p>Modern web teknolojileri kullanarak responsive ve kullanıcı dostu web siteleri geliştiriyorum.</p>
+                <ul>
+                    <li>Frontend Development (React, JavaScript)</li>
+                    <li>Backend Development (Django, .NET)</li>
+                    <li>Database Design</li>
+                </ul>
+            </div>
+            
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Masaüstü Uygulamalar</h3>
+                <p>C# .NET teknolojisi ile güçlü masaüstü uygulamaları geliştiriyorum.</p>
+                <ul>
+                    <li>Windows Forms Uygulamaları</li>
+                    <li>WPF Uygulamaları</li>
+                    <li>Console Uygulamaları</li>
+                </ul>
+            </div>
+            
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Veritabanı Yönetimi</h3>
+                <p>Veritabanı tasarımı, optimizasyonu ve yönetimi konularında uzmanım.</p>
+                <ul>
+                    <li>MSSQL Server Administration</li>
+                    <li>Database Design & Optimization</li>
+                    <li>Data Migration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Projects Section -->
+<section class="latest-projects" id="latest-projects">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Son Projelerim</h2>
+            <p>En son üzerinde çalıştığım projelerden örnekler</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <img src="{% static 'img/project-placeholder.jpg' %}" alt="Proje 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <i class="fas fa-image"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>E-Ticaret Platformu</h3>
+                    <p>Django ve React teknolojileri kullanılarak geliştirilmiş modern e-ticaret platformu.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <img src="{% static 'img/project-placeholder-2.jpg' %}" alt="Proje 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <i class="fas fa-image"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Stok Yönetim Sistemi</h3>
+                    <p>C# .NET ile geliştirilmiş kapsamlı stok takip ve yönetim uygulaması.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C# .NET</span>
+                        <span class="tech-tag">MSSQL</span>
+                        <span class="tech-tag">WPF</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-image">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <img src="{% static 'img/project-placeholder-3.jpg' %}" alt="Proje 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <i class="fas fa-image"></i>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Portfolyo Website</h3>
+                    <p>Bu site! Django backend ve modern frontend teknolojileri ile geliştirilmiş.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-cta" data-aos="fade-up" data-aos-delay="400">
+            <a href="{% url 'core:projects' %}" class="btn btn-primary">
+                Tüm Projeleri Gör
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content" data-aos="fade-up">
+            <h2>Projeni Hayata Geçirelim!</h2>
+            <p>Yaratıcı fikirlerini modern teknolojilerle buluşturalım. Beraber harika işler çıkarabiliriz.</p>
+            <div class="cta-buttons">
+                <a href="{% url 'core:contact' %}" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Hemen Başlayalım
+                </a>
+                <a href="{% url 'core:about' %}" class="btn btn-secondary">
+                    <i class="fas fa-user"></i>
+                    Daha Fazla Bilgi
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/mountain-animation.js' %}"></script>
+{% endblock %}

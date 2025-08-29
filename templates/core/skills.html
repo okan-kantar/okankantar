@@ -1,0 +1,746 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Yetenekler - Okan Kantar{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Yetenekler</h1>
+            <p>Teknoloji alanındaki yetkinliklerim ve uzmanlık alanlarım</p>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Skills -->
+<section class="skills-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Teknik Yetenekler</h2>
+            <p>Uzmanlaştığım programlama dilleri ve teknolojiler</p>
+        </div>
+        
+        <div class="skills-categories">
+            <!-- Programming Languages -->
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Programlama Dilleri</h3>
+                </div>
+                <div class="skills-list">
+                    {% for skill in skills.programming_languages %}
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">{{ skill.name }}</span>
+                            <span class="skill-percentage">{{ skill.level }}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Frameworks -->
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Framework ve Kütüphaneler</h3>
+                </div>
+                <div class="skills-list">
+                    {% for skill in skills.frameworks %}
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">{{ skill.name }}</span>
+                            <span class="skill-percentage">{{ skill.level }}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Databases -->
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Veritabanları</h3>
+                </div>
+                <div class="skills-list">
+                    {% for skill in skills.databases %}
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">{{ skill.name }}</span>
+                            <span class="skill-percentage">{{ skill.level }}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Tools -->
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Araçlar ve Teknolojiler</h3>
+                </div>
+                <div class="skills-list">
+                    {% for skill in skills.tools %}
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">{{ skill.name }}</span>
+                            <span class="skill-percentage">{{ skill.level }}%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Overview -->
+<section class="skills-overview">
+    <div class="container">
+        <div class="overview-grid">
+            <div class="overview-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="overview-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Frontend Development</h3>
+                <p>Modern web teknolojileri kullanarak kullanıcı dostu arayüzler geliştiriyorum.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+            
+            <div class="overview-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="overview-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Backend Development</h3>
+                <p>Güvenilir ve ölçeklenebilir sunucu tarafı uygulamaları geliştiriyorum.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">C# .NET</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">MSSQL</span>
+                </div>
+            </div>
+            
+            <div class="overview-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="overview-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Desktop Applications</h3>
+                <p>Windows platformu için güçlü masaüstü uygulamaları geliştiriyorum.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">WPF</span>
+                    <span class="tech-tag">Windows Forms</span>
+                    <span class="tech-tag">C# .NET</span>
+                    <span class="tech-tag">Entity Framework</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Soft Skills -->
+<section class="soft-skills-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Kişisel Yetenekler</h2>
+            <p>Teknik bilginin yanında sahip olduğum kişisel beceriler</p>
+        </div>
+        
+        <div class="soft-skills-grid">
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="skill-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Takım Çalışması</h3>
+                <p>Ekip içinde etkili iletişim kurarak ortak hedeflere ulaşmada başarılıyım.</p>
+            </div>
+            
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Problem Çözme</h3>
+                <p>Karmaşık problemleri analiz ederek yaratıcı ve etkili çözümler üretiyorum.</p>
+            </div>
+            
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="skill-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Zaman Yönetimi</h3>
+                <p>Projeleri zamanında teslim etmek için etkili planlama ve önceliklendirme yapıyorum.</p>
+            </div>
+            
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="skill-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>İletişim</h3>
+                <p>Hem teknik hem de teknik olmayan kişilerle etkili iletişim kurabiliyorum.</p>
+            </div>
+            
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="skill-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Liderlik</h3>
+                <p>Takım lideri olarak ekip motivasyonunu ve verimliliğini artırıyorum.</p>
+            </div>
+            
+            <div class="soft-skill-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="skill-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Sürekli Öğrenme</h3>
+                <p>Teknolojideki yenilikleri takip ederek kendimi sürekli geliştiriyorum.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Learning Path -->
+<section class="learning-path-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Öğrenme Yolculuğum</h2>
+            <p>Teknoloji alanındaki gelişim sürecim</p>
+        </div>
+        
+        <div class="learning-timeline">
+            <div class="learning-item" data-aos="fade-right" data-aos-delay="100">
+                <div class="learning-year">2018</div>
+                <div class="learning-content">
+                    <h3>Programlamaya Başlangıç</h3>
+                    <p>C# ve .NET Framework ile programlama dünyasına adım attım.</p>
+                </div>
+            </div>
+            
+            <div class="learning-item" data-aos="fade-left" data-aos-delay="200">
+                <div class="learning-year">2020</div>
+                <div class="learning-content">
+                    <h3>Web Geliştirme</h3>
+                    <p>HTML, CSS, JavaScript ile frontend geliştirmeyi öğrendim.</p>
+                </div>
+            </div>
+            
+            <div class="learning-item" data-aos="fade-right" data-aos-delay="300">
+                <div class="learning-year">2021</div>
+                <div class="learning-content">
+                    <h3>Database Uzmanlığı</h3>
+                    <p>MSSQL Server ile veritabanı yönetimi ve optimizasyonu konularında uzmanlaştım.</p>
+                </div>
+            </div>
+            
+            <div class="learning-item" data-aos="fade-left" data-aos-delay="400">
+                <div class="learning-year">2022</div>
+                <div class="learning-content">
+                    <h3>Python ve Django</h3>
+                    <p>Python programlama dili ve Django framework'ü ile Full Stack geliştirmeye başladım.</p>
+                </div>
+            </div>
+            
+            <div class="learning-item" data-aos="fade-right" data-aos-delay="500">
+                <div class="learning-year">2023</div>
+                <div class="learning-content">
+                    <h3>Modern JavaScript</h3>
+                    <p>React, modern JavaScript ve frontend teknolojilerinde derinleştim.</p>
+                </div>
+            </div>
+            
+            <div class="learning-item" data-aos="fade-left" data-aos-delay="600">
+                <div class="learning-year">2024</div>
+                <div class="learning-content">
+                    <h3>Takım Liderliği</h3>
+                    <p>Yazılım takım lideri olarak proje yönetimi ve ekip koordinasyonu deneyimi kazandım.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="skills-cta">
+    <div class="container">
+        <div class="cta-content" data-aos="fade-up">
+            <h2>Projende Bu Yetenekleri Kullanmak İster Misin?</h2>
+            <p>Birlikte harika projeler geliştirebiliriz. İletişime geçelim!</p>
+            <div class="cta-buttons">
+                <a href="{% url 'core:contact' %}" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    İletişim
+                </a>
+                <a href="{% url 'core:projects' %}" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    Projelerimi Gör
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Page Hero */
+.page-hero {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 8rem 0 4rem;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 6rem 0;
+    background: var(--background-light);
+}
+
+.skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 3rem;
+}
+
+.skill-category {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.category-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.category-header h3 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-item {
+    position: relative;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.skill-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-percentage {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.5s ease;
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Skills Overview */
+.skills-overview {
+    padding: 6rem 0;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.overview-item {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+    border-top: 4px solid var(--primary-color);
+}
+
+.overview-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.overview-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.overview-item h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.overview-item p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.tech-tag {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Soft Skills */
+.soft-skills-section {
+    padding: 6rem 0;
+    background: var(--background-light);
+}
+
+.soft-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.soft-skill-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.soft-skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.soft-skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.skill-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.soft-skill-card h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.soft-skill-card p {
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Learning Path */
+.learning-path-section {
+    padding: 6rem 0;
+}
+
+.learning-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.learning-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.learning-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.learning-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.learning-year {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    font-size: 1.25rem;
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.learning-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    width: calc(50% - 60px);
+    margin: 0 20px;
+}
+
+.learning-item:nth-child(even) .learning-content {
+    text-align: right;
+}
+
+.learning-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.learning-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.skills-cta {
+    background: var(--gradient-primary);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.skills-cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.skills-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills-cta .btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.skills-cta .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .skills-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .overview-grid,
+    .soft-skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .learning-timeline::before {
+        left: 20px;
+    }
+    
+    .learning-item,
+    .learning-item:nth-child(even) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .learning-year {
+        min-width: 80px;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+    
+    .learning-content {
+        width: calc(100% - 120px);
+        margin-left: 20px;
+        text-align: left !important;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize skill bar animations
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillBar = entry.target;
+                const percentage = skillBar.getAttribute('data-percentage');
+                
+                setTimeout(() => {
+                    skillBar.style.width = percentage + '%';
+                }, 200);
+                
+                skillObserver.unobserve(skillBar);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+    });
+});
+</script>
+{% endblock %}

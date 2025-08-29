@@ -1,0 +1,640 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Hakkımda - Okan Kantar{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="page-hero">
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Hakkımda</h1>
+            <p>Full Stack Developer olarak teknolojiyle yaratıcılığı buluşturuyorum</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text" data-aos="fade-right">
+                <h2>Ben Kimim?</h2>
+                <p>Merhaba! Ben Okan Kantar, teknoloji tutkunu bir Full Stack Developer'ım. 2006 yılında Gazi Üniversitesi İktisat bölümünden mezun olduktan sonra, finans alanında yüksek lisans yaparak Hacettepe Üniversitesi'nden mezun oldum.</p>
+                
+                <p>Kariyerime kamu sektöründe bütçe ve muhasebe uzmanı olarak başladım. Ancak teknolojiye olan tutkum beni yazılım geliştirme dünyasına yönlendirdi. Bu alanda kendimi geliştirerek, şu anda yazılım takım lideri olarak çalışıyorum.</p>
+                
+                <p>Özellikle <strong>C# .NET, Python Django, JavaScript</strong> ve modern web teknolojilerinde uzmanlaştım. Hem finans hem de teknoloji deneyimim sayesinde, karmaşık iş süreçlerini anlamak ve bunları etkili çözümlere dönüştürmek konusunda güçlüyüm.</p>
+                
+                <div class="personal-info">
+                    <div class="info-item">
+                        <strong>Yaş:</strong> 35
+                    </div>
+                    <div class="info-item">
+                        <strong>Lokasyon:</strong> Ankara, Türkiye
+                    </div>
+                    <div class="info-item">
+                        <strong>Email:</strong> okkant@gmail.com
+                    </div>
+                    <div class="info-item">
+                        <strong>Telefon:</strong> 0539 315 6407
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image" data-aos="fade-left">
+                <div class="image-container">
+                    <img src="{% static 'img/profile.jpg' %}" alt="Okan Kantar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="decorative-elements">
+                    <div class="element element-1"></div>
+                    <div class="element element-2"></div>
+                    <div class="element element-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="education-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Eğitim</h2>
+            <p>Akademik geçmişim ve aldığım eğitimler</p>
+        </div>
+        
+        <div class="timeline">
+            {% for edu in education %}
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">{{ edu.years }}</div>
+                    <h3>{{ edu.degree }}</h3>
+                    <h4>{{ edu.school }}</h4>
+                    <p>{{ edu.department }}</p>
+                    <span class="location"><i class="fas fa-map-marker-alt"></i> {{ edu.location }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section class="experience-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Deneyim</h2>
+            <p>Profesyonel kariyerim ve çalıştığım pozisyonlar</p>
+        </div>
+        
+        <div class="experience-grid">
+            {% for exp in experience %}
+            <div class="experience-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <div class="card-header">
+                    <div class="position-info">
+                        <h3>{{ exp.position }}</h3>
+                        <h4>{{ exp.company }}</h4>
+                    </div>
+                    <div class="date-badge">{{ exp.years }}</div>
+                </div>
+                <div class="card-body">
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> {{ exp.location }}</p>
+                    {% if exp.description %}
+                    <p>{{ exp.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Certificates Section -->
+<section class="certificates-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Sertifikalar</h2>
+            <p>Aldığım eğitimler ve sertifikalar</p>
+        </div>
+        
+        <div class="certificates-grid">
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Vektörel Academy .Net Software Expertise Certificate</h3>
+                <p>C#, MVC, .Net Framework, SQL, HTML, CSS, Javascript</p>
+                <div class="certificate-date">2023</div>
+            </div>
+            
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Neos Software Academy FullStack Developer Training</h3>
+                <p>Frontend (Html, Css), Javascript, React, Python (Django)</p>
+                <div class="certificate-date">2023</div>
+            </div>
+            
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>BilgeAdam MS SQL SERVER ADMINISTRATOR</h3>
+                <p>Database Administration and Management</p>
+                <div class="certificate-date">2024</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Değerlerim</h2>
+            <p>Çalışma hayatımda benimsediğim ilkeler</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>İnovasyon</h3>
+                <p>Sürekli öğrenme ve yenilikçi çözümler geliştirme</p>
+            </div>
+            
+            <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>İşbirliği</h3>
+                <p>Takım çalışması ve etkili iletişim</p>
+            </div>
+            
+            <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="value-icon">
+                    <i class="fas fa-target"></i>
+                </div>
+                <h3>Kalite</h3>
+                <p>Mükemmeliyetçi yaklaşım ve detaylara özen</p>
+            </div>
+            
+            <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="value-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Gelişim</h3>
+                <p>Sürekli kendini geliştirme ve büyüme</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interests Section -->
+<section class="interests-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2>İlgi Alanları</h2>
+            <p>Teknoloji dışında ilgilendiğim konular</p>
+        </div>
+        
+        <div class="interests-list" data-aos="fade-up" data-aos-delay="200">
+            <div class="interest-item">
+                <i class="fas fa-film"></i>
+                <span>Kısa film</span>
+            </div>
+            <div class="interest-item">
+                <i class="fas fa-book"></i>
+                <span>Felsefe</span>
+            </div>
+            <div class="interest-item">
+                <i class="fas fa-gamepad"></i>
+                <span>Kodlama</span>
+            </div>
+            <div class="interest-item">
+                <i class="fas fa-plane"></i>
+                <span>Seyahat</span>
+            </div>
+            <div class="interest-item">
+                <i class="fas fa-book-open"></i>
+                <span>Kitap okumak</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download CV Section -->
+<section class="download-cv-section">
+    <div class="container">
+        <div class="cv-content" data-aos="fade-up">
+            <h2>CV'mi İndirin</h2>
+            <p>Detaylı özgeçmişim için aşağıdaki bağlantıyı kullanabilirsiniz</p>
+            <a href="{% static 'files/okan-kantar-cv.pdf' %}" class="btn btn-primary" download>
+                <i class="fas fa-download"></i>
+                CV İndir (PDF)
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Page Hero */
+.page-hero {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 8rem 0 4rem;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* About Content */
+.about-content {
+    padding: 6rem 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.personal-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: var(--border-radius-lg);
+}
+
+.info-item {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.about-image {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: var(--background-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--text-light);
+}
+
+.decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.element {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0.1;
+}
+
+.element-1 {
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    right: -20px;
+}
+
+.element-2 {
+    width: 60px;
+    height: 60px;
+    bottom: -10px;
+    left: -10px;
+}
+
+.element-3 {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: -40px;
+}
+
+/* Timeline */
+.education-section,
+.experience-section {
+    background: var(--background-light);
+    padding: 6rem 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-content {
+    width: calc(50% - 40px);
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: calc(50% + 40px);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: calc(50% + 40px);
+}
+
+.timeline-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.timeline-content h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Experience Cards */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.experience-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.date-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Certificates */
+.certificates-section {
+    padding: 6rem 0;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.certificate-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.certificate-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.certificate-date {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* Values */
+.values-section {
+    background: var(--background-light);
+    padding: 6rem 0;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+    color: white;
+}
+
+/* Interests */
+.interests-section {
+    padding: 6rem 0;
+}
+
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.interest-item {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+/* Download CV */
+.download-cv-section {
+    background: var(--gradient-primary);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.download-cv-section h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.download-cv-section p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.download-cv-section .btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-marker {
+        left: 20px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+    
+    .experience-grid,
+    .certificates-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
