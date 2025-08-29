@@ -410,7 +410,7 @@
     position: relative;
     height: 200px;
     overflow: hidden;
-    background: var(--background-light);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,8 +423,17 @@
 }
 
 .image-placeholder {
-    font-size: 3rem;
-    color: var(--text-light);
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .project-overlay {
