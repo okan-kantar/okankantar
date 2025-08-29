@@ -17,16 +17,40 @@
     <div class="hero-content" id="hero-content">
         <div class="hero-text" data-aos="fade-up" data-aos-delay="2000">
             <h1 class="hero-title">
-                <span class="text-reveal">Merhaba, Ben</span>
-                <span class="name-highlight">Okan Kantar</span>
+                <span class="text-reveal">
+                    {% if site_settings.hero_title %}
+                        {{ site_settings.hero_title|truncatewords:2 }}
+                    {% else %}
+                        Merhaba, Ben
+                    {% endif %}
+                </span>
+                <span class="name-highlight">
+                    {% if personal_info.name %}
+                        {{ personal_info.name }}
+                    {% else %}
+                        Okan Kantar
+                    {% endif %}
+                </span>
             </h1>
             <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="2300">
-                Full Stack Developer
+                {% if site_settings.hero_subtitle %}
+                    {{ site_settings.hero_subtitle }}
+                {% elif personal_info.title %}
+                    {{ personal_info.title }}
+                {% else %}
+                    Full Stack Developer
+                {% endif %}
             </h2>
             <p class="hero-description" data-aos="fade-up" data-aos-delay="2600">
-                Modern teknolojilerle yaratıcı çözümler üreten, 
-                <strong>C#, Python, JavaScript</strong> ve <strong>Django, React</strong> 
-                teknolojilerinde uzman yazılım geliştirici
+                {% if site_settings.hero_description %}
+                    {{ site_settings.hero_description }}
+                {% elif personal_info.bio %}
+                    {{ personal_info.bio }}
+                {% else %}
+                    Modern teknolojilerle yaratıcı çözümler üreten, 
+                    <strong>C#, Python, JavaScript</strong> ve <strong>Django, React</strong> 
+                    teknolojilerinde uzman yazılım geliştirici
+                {% endif %}
             </p>
             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="2900">
                 <a href="{% url 'core:projects' %}" class="btn btn-primary">
@@ -57,9 +81,13 @@
                     </div>
                 </div>
                 <div class="profile-image">
+                    {% if personal_info.profile_image %}
+                    <img src="{{ personal_info.profile_image.url }}" alt="{{ personal_info.name|default:'Profil Fotoğrafı' }}" />
+                    {% else %}
                     <div class="image-placeholder">
                         <i class="fas fa-user-tie"></i>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -167,59 +195,68 @@
         </div>
         
         <div class="projects-grid">
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+            {% if featured_projects %}
+                {% for project in featured_projects %}
+                <div class="project-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter 1 100 %}">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="project-content">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.short_description }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.tech_list|slice:":3" %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
                         </div>
                     </div>
-                    <img src="{% static 'img/project-placeholder.jpg' %}" alt="Proje 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder" style="display: none;">
-                        <i class="fas fa-image"></i>
-                    </div>
                 </div>
-                <div class="project-content">
-                    <h3>E-Ticaret Platformu</h3>
-                    <p>Django ve React teknolojileri kullanılarak geliştirilmiş modern e-ticaret platformu.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                {% endfor %}
+            {% else %}
+                <!-- Varsayılan projeler - veri yoksa -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
                         </div>
                     </div>
-                    <img src="{% static 'img/project-placeholder-2.jpg' %}" alt="Proje 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder" style="display: none;">
-                        <i class="fas fa-image"></i>
+                    <div class="project-content">
+                        <h3>E-Ticaret Platformu</h3>
+                        <p>Django ve React teknolojileri kullanılarak geliştirilmiş modern e-ticaret platformu.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <h3>Stok Yönetim Sistemi</h3>
-                    <p>C# .NET ile geliştirilmiş kapsamlı stok takip ve yönetim uygulaması.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">C# .NET</span>
-                        <span class="tech-tag">MSSQL</span>
-                        <span class="tech-tag">WPF</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+            {% endif %}
                             <a href="#" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>

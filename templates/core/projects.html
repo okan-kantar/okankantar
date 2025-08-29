@@ -23,31 +23,87 @@
         </div>
         
         <div class="projects-grid">
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="project-link" title="Canlı Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+            {% if projects %}
+                {% for project in projects %}
+                <div class="project-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="project-link" title="Canlı Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="project-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                {% endif %}
+                                <a href="{% url 'core:project_detail' project.slug %}" class="project-link" title="Detaylar">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                            </div>
                         </div>
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="image-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        {% endif %}
                     </div>
-                    <div class="image-placeholder">
-                        <i class="fas fa-shopping-cart"></i>
+                    <div class="project-content">
+                        <div class="project-category">{{ project.get_category_display }}</div>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.short_description }}</p>
+                        {% if project.features_list %}
+                        <div class="project-features">
+                            {% for feature in project.features_list|slice:":3" %}
+                            <span class="feature">✓ {{ feature }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <div class="project-tech">
+                            {% for tech in project.tech_list|slice:":4" %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-status">{{ project.get_status_display }}</div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <div class="project-category">Web Uygulaması</div>
-                    <h3>E-Ticaret Platformu</h3>
-                    <p>Django ve React teknolojileri kullanılarak geliştirilmiş modern e-ticaret platformu. Ödeme entegrasyonu, admin paneli ve kullanıcı yönetimi özellikleri bulunmaktadır.</p>
-                    <div class="project-features">
-                        <span class="feature">✓ Ödeme Entegrasyonu</span>
-                        <span class="feature">✓ Admin Paneli</span>
-                        <span class="feature">✓ Responsive Tasarım</span>
+                {% endfor %}
+            {% else %}
+                <!-- Varsayılan projeler - veri yoksa -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Canlı Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="image-placeholder">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                    <div class="project-content">
+                        <div class="project-category">Web Uygulaması</div>
+                        <h3>E-Ticaret Platformu</h3>
+                        <p>Django ve React teknolojileri kullanılarak geliştirilmiş modern e-ticaret platformu. Ödeme entegrasyonu, admin paneli ve kullanıcı yönetimi özellikleri bulunmaktadır.</p>
+                        <div class="project-features">
+                            <span class="feature">✓ Ödeme Entegrasyonu</span>
+                            <span class="feature">✓ Admin Paneli</span>
+                            <span class="feature">✓ Responsive Tasarım</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-status">Tamamlandı</div>
+                    </div>
+                </div>
+            {% endif %}
                         <span class="tech-tag">REST API</span>
                     </div>
                 </div>

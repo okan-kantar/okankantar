@@ -88,7 +88,7 @@
                     <p>Proje fikirlerinizi paylaşın, sorularınızı sorun veya işbirliği önerilerinizi iletin.</p>
                 </div>
                 
-                <form id="contact-form" class="contact-form" method="post" action="{% url 'core:contact' %}">
+                <form id="contact-form" class="contact-form" method="post" action="{% url 'core:contact_submit' %}">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group">
@@ -685,11 +685,18 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 const formData = new FormData(contactForm);
+                const requestData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
                 
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
-                    body: formData,
+                    body: JSON.stringify(requestData),
                     headers: {
+                        'Content-Type': 'application/json',
                         'X-CSRFToken': formData.get('csrfmiddlewaretoken')
                     }
                 });

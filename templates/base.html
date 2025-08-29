@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Okan Kantar - Full Stack Developer{% endblock %}</title>
+    <title>{% block title %}{{ site_settings.site_title|default:"Okan Kantar - Full Stack Developer" }}{% endblock %}</title>
     
     <!-- Meta tags for SEO -->
-    <meta name="description" content="Okan Kantar - Full Stack Developer. C#, Python, JavaScript, React, Django uzmanı. Profesyonel yazılım geliştirme hizmetleri.">
-    <meta name="keywords" content="Okan Kantar, Full Stack Developer, C#, Python, Django, React, JavaScript, Yazılım Geliştirici, Ankara">
-    <meta name="author" content="Okan Kantar">
+    <meta name="description" content="{% block description %}{{ site_settings.site_description|default:"Okan Kantar - Full Stack Developer. C#, Python, JavaScript, React, Django uzmanı. Profesyonel yazılım geliştirme hizmetleri." }}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{{ site_settings.meta_keywords|default:"Okan Kantar, Full Stack Developer, C#, Python, Django, React, JavaScript, Yazılım Geliştirici, Ankara" }}{% endblock %}">
+    <meta name="author" content="{{ personal_info.name|default:"Okan Kantar" }}">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Okan Kantar - Full Stack Developer">
-    <meta property="og:description" content="Profesyonel yazılım geliştirici. Modern teknolojilerle kaliteli çözümler.">
+    <meta property="og:title" content="{% block og_title %}{{ site_settings.site_title|default:"Okan Kantar - Full Stack Developer" }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ site_settings.site_description|default:"Profesyonel yazılım geliştirici. Modern teknolojilerle kaliteli çözümler." }}{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://okankantar.com">
     
@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Okan Kantar. Tüm hakları saklıdır.</p>
+                <p>{{ site_settings.footer_text|default:"© 2024 Okan Kantar. Tüm hakları saklıdır." }}</p>
             </div>
         </div>
     </footer>

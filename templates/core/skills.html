@@ -32,17 +32,44 @@
                     <h3>Programlama Dilleri</h3>
                 </div>
                 <div class="skills-list">
-                    {% for skill in skills.programming_languages %}
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span class="skill-name">{{ skill.name }}</span>
-                            <span class="skill-percentage">{{ skill.level }}%</span>
+                    {% if programming_skills %}
+                        {% for skill in programming_skills %}
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">
+                                    {% if skill.icon_class %}
+                                    <i class="{{ skill.icon_class }}"></i>
+                                    {% endif %}
+                                    {{ skill.name }}
+                                </span>
+                                <span class="skill-percentage">{{ skill.level }}%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-percentage="{{ skill.level }}"></div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Varsayılan programlama dilleri -->
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><i class="fab fa-python"></i> Python</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-percentage="90"></div>
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-percentage="85"></div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             

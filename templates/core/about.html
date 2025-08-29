@@ -20,34 +20,46 @@
         <div class="about-grid">
             <div class="about-text" data-aos="fade-right">
                 <h2>Ben Kimim?</h2>
-                <p>Merhaba! Ben Okan Kantar, teknoloji tutkunu bir Full Stack Developer'ım. 2006 yılında Gazi Üniversitesi İktisat bölümünden mezun olduktan sonra, finans alanında yüksek lisans yaparak Hacettepe Üniversitesi'nden mezun oldum.</p>
-                
-                <p>Kariyerime kamu sektöründe bütçe ve muhasebe uzmanı olarak başladım. Ancak teknolojiye olan tutkum beni yazılım geliştirme dünyasına yönlendirdi. Bu alanda kendimi geliştirerek, şu anda yazılım takım lideri olarak çalışıyorum.</p>
-                
-                <p>Özellikle <strong>C# .NET, Python Django, JavaScript</strong> ve modern web teknolojilerinde uzmanlaştım. Hem finans hem de teknoloji deneyimim sayesinde, karmaşık iş süreçlerini anlamak ve bunları etkili çözümlere dönüştürmek konusunda güçlüyüm.</p>
+                {% if personal_info.about_text %}
+                    {{ personal_info.about_text|linebreaks }}
+                {% else %}
+                    <p>Merhaba! Ben {{ personal_info.name|default:"Okan Kantar" }}, teknoloji tutkunu bir Full Stack Developer'ım. 2006 yılında Gazi Üniversitesi İktisat bölümünden mezun olduktan sonra, finans alanında yüksek lisans yaparak Hacettepe Üniversitesi'nden mezun oldum.</p>
+                    
+                    <p>Kariyerime kamu sektöründe bütçe ve muhasebe uzmanı olarak başladım. Ancak teknolojiye olan tutkum beni yazılım geliştirme dünyasına yönlendirdi. Bu alanda kendimi geliştirerek, şu anda yazılım takım lideri olarak çalışıyorum.</p>
+                    
+                    <p>Özellikle <strong>C# .NET, Python Django, JavaScript</strong> ve modern web teknolojilerinde uzmanlaştım. Hem finans hem de teknoloji deneyimim sayesinde, karmaşık iş süreçlerini anlamak ve bunları etkili çözümlere dönüştürmek konusunda güçlüyüm.</p>
+                {% endif %}
                 
                 <div class="personal-info">
                     <div class="info-item">
-                        <strong>Yaş:</strong> 35
+                        <strong>Yaş:</strong> 
+                        {% if personal_info.age %}
+                            {{ personal_info.age }}
+                        {% else %}
+                            35
+                        {% endif %}
                     </div>
                     <div class="info-item">
-                        <strong>Lokasyon:</strong> Ankara, Türkiye
+                        <strong>Lokasyon:</strong> {{ personal_info.location|default:"Ankara, Türkiye" }}
                     </div>
                     <div class="info-item">
-                        <strong>Email:</strong> okkant@gmail.com
+                        <strong>Email:</strong> {{ personal_info.email|default:"okkant@gmail.com" }}
                     </div>
                     <div class="info-item">
-                        <strong>Telefon:</strong> 0539 315 6407
+                        <strong>Telefon:</strong> {{ personal_info.phone|default:"0539 315 6407" }}
                     </div>
                 </div>
             </div>
             
             <div class="about-image" data-aos="fade-left">
                 <div class="image-container">
-                    <img src="{% static 'img/profile.jpg' %}" alt="Okan Kantar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-placeholder" style="display: none;">
+                    {% if personal_info.profile_image %}
+                    <img src="{{ personal_info.profile_image.url }}" alt="{{ personal_info.name|default:'Okan Kantar' }}">
+                    {% else %}
+                    <div class="image-placeholder">
                         <i class="fas fa-user-tie"></i>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="decorative-elements">
                     <div class="element element-1"></div>
@@ -68,18 +80,45 @@
         </div>
         
         <div class="timeline">
-            {% for edu in education %}
-            <div class="timeline-item" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <div class="timeline-date">{{ edu.years }}</div>
-                    <h3>{{ edu.degree }}</h3>
-                    <h4>{{ edu.school }}</h4>
-                    <p>{{ edu.department }}</p>
-                    <span class="location"><i class="fas fa-map-marker-alt"></i> {{ edu.location }}</span>
+            {% if educations %}
+                {% for edu in educations %}
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">{{ edu.years_display }}</div>
+                        <h3>{{ edu.get_degree_display }}</h3>
+                        <h4>{{ edu.school }}</h4>
+                        <p>{{ edu.department }}</p>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> {{ edu.location }}</span>
+                        {% if edu.description %}
+                        <div class="description">{{ edu.description|linebreaks }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <!-- Varsayılan eğitim bilgileri -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">07.2019 - 06.2021</div>
+                        <h3>Yüksek Lisans</h3>
+                        <h4>Hacettepe Üniversitesi</h4>
+                        <p>Finans/Finance</p>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Ankara</span>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">09.2006 - 06.2011</div>
+                        <h3>Lisans</h3>
+                        <h4>Gazi Üniversitesi</h4>
+                        <p>İktisat/Economics</p>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Ankara</span>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -93,23 +132,39 @@
         </div>
         
         <div class="experience-grid">
-            {% for exp in experience %}
-            <div class="experience-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
-                <div class="card-header">
-                    <div class="position-info">
-                        <h3>{{ exp.position }}</h3>
-                        <h4>{{ exp.company }}</h4>
+            {% if experiences %}
+                {% for exp in experiences %}
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                    <div class="card-header">
+                        <div class="position-info">
+                            <h3>{{ exp.position }}</h3>
+                            <h4>{{ exp.company }}</h4>
+                        </div>
+                        <div class="date-badge">{{ exp.years_display }}</div>
                     </div>
-                    <div class="date-badge">{{ exp.years }}</div>
+                    <div class="card-body">
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> {{ exp.location }}</p>
+                        {% if exp.description %}
+                        <p>{{ exp.description|linebreaks }}</p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> {{ exp.location }}</p>
-                    {% if exp.description %}
-                    <p>{{ exp.description }}</p>
-                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <!-- Varsayılan deneyim bilgileri -->
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card-header">
+                        <div class="position-info">
+                            <h3>Yazılım Takım Lideri</h3>
+                            <h4>Tarım ve Kırsal Kalkınmayı Destekleme Kurumu</h4>
+                        </div>
+                        <div class="date-badge">12.2024 - günümüz</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ankara, Türkiye</p>
+                    </div>
                 </div>
-            </div>
-            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>
